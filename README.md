@@ -98,3 +98,15 @@ to show changes in stash
 ```bash
 git stash show -p stash@{0}
 ```
+
+To clear all stash
+
+```bash
+git stash clear
+```
+
+To remove a single stash, if no `<stash>` is given, it will remove the latest one
+
+```bash
+git stash drop <stash>
+```
