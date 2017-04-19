@@ -1,6 +1,6 @@
 # Git-Notes
 
-### `git status`
+### Show status
 
 `--short` option to give a more brief view
 
@@ -8,7 +8,7 @@
 git status --short
 ```
 
-### `git pull`
+### To pull
 
 `git pull` is really equivalent to running `git fetch` and then `git merge`. These are like a cache of the state of branches in the remote repository that are updated when you do git fetch (or a successful git push).
 
