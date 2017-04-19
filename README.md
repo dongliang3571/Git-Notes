@@ -4,8 +4,16 @@
 
 `--short` option to give a more brief view
 
-```
+```bash
 git status --short
+```
+
+### List branches
+
+```bash
+git branch # list all local branches
+git branch -r # list all remote branches
+git branch -a # list all local and remote branches
 ```
 
 ### To pull
