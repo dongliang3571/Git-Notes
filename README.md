@@ -236,3 +236,10 @@ To git@github.com:schacon/simplegit.git
  * [new tag]         v1.4 -> v1.4
  * [new tag]         v1.4-lw -> v1.4-lw
  ```
+ 
+ ### Show current tag
+
+```bash
+ git describe --tags
+ ```
+
