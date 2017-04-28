@@ -243,3 +243,38 @@ To git@github.com:schacon/simplegit.git
  git describe --tags
  ```
 
+### Symbolic ref HEAD
+
+[good resource for head and rebase](http://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin)
+
+**HEAD** is the symbolic name for the currently checked out commit. When HEAD is not detached (the “normal”1 situation: you have a branch checked out), HEAD actually points to a branch’s “ref” and the branch points to the commit. HEAD is thus “attached” to a branch. When you make a new commit, the branch that HEAD points to is updated to point to the new commit. HEAD follows automatically since it just points to the branch.
+
+-- `git symbolic-ref HEAD` yields `refs/heads/master`. 
+	
+The branch named “master” is checked out.
+
+-- `git rev-parse refs/heads/master` yield `17a02998078923f2d62811326d130de991d1a95a`. 
+
+That commit is the current tip or “head” of the master branch.
+
+-- `git rev-parse HEAD` also yields `17a02998078923f2d62811326d130de991d1a95a`
+
+This is what it means to be a “symbolic ref”. It points to an object through some other reference.
+
+(Symbolic refs were originally implemented as symbolic links, but later changed to plain files with extra interpretation so that they could be used on platforms that do not have symlinks.)
+
+We have `HEAD` → `refs/heads/master` → `17a02998078923f2d62811326d130de991d1a95a`
+
+When HEAD is detached, it points directly to a commit—instead of indirectly pointing to one through a branch. You can think of a detached HEAD as being on an unnamed branch.
+
+-- `git symbolic-ref HEAD` fails with fatal: `ref HEAD is not a symbolic ref`
+
+-- `git rev-parse HEAD` yields `17a02998078923f2d62811326d130de991d1a95a`
+
+Since it is not a symbolic ref, it must point directly to the commit itself.
+
+We have `HEAD` → `17a02998078923f2d62811326d130de991d1a95a`
+
+The important thing to remember with a detached HEAD is that if the commit it points to is otherwise unreferenced (no other ref can reach it), then it will become “dangling” when you checkout some other commit. Eventually, such dangling commits will be pruned through the garbage collection process (by default, they are kept for at least 2 weeks and may be kept longer by being referenced by HEAD’s reflog).
+
+1 It is perfectly fine to do “normal” work with a detached HEAD, you just have to keep track of what you are doing to avoid having to fish dropped history out of the reflog.
