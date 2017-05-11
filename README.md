@@ -278,3 +278,13 @@ We have `HEAD` → `17a02998078923f2d62811326d130de991d1a95a`
 The important thing to remember with a detached HEAD is that if the commit it points to is otherwise unreferenced (no other ref can reach it), then it will become “dangling” when you checkout some other commit. Eventually, such dangling commits will be pruned through the garbage collection process (by default, they are kept for at least 2 weeks and may be kept longer by being referenced by HEAD’s reflog).
 
 1 It is perfectly fine to do “normal” work with a detached HEAD, you just have to keep track of what you are doing to avoid having to fish dropped history out of the reflog.
+
+### checkout remote branch
+
+You need to create a local branch that tracks a remote branch. The following command will create a local branch named daves_branch, tracking the remote branch origin/daves_branch. When you push your changes the remote branch will be updated.
+
+```bash
+git checkout --track origin/daves_branch
+```
+
+`--track` is shorthand for `git checkout -b [branch] [remotename]/[branch]` where [remotename] is origin in this case and [branch] is twice the same, daves_branch in this case.
