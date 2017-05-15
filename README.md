@@ -242,6 +242,38 @@ To git@github.com:schacon/simplegit.git
 ```bash
  git describe --tags
  ```
+ 
+### Moving a tag
+
+```bash
+# -f
+# --force
+# Replace an existing tag with the given name (instead of failing)
+
+git tag -f
+```
+
+You probably want to use -f in conjunction with -a to force-create an annotated tag instead of a non-annotated one.
+
+**Example**
+
+Delete the tag on any remote before you push
+
+```bash
+git push origin :refs/tags/<tagname>
+```
+
+Replace the tag to reference the most recent commit
+
+```bash
+git tag -fa <tagname>
+```
+
+Push the tag to the remote origin
+
+```bash
+git push origin master --tags
+```
 
 ### Symbolic ref HEAD
 
