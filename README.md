@@ -263,6 +263,12 @@ Delete the tag on any remote before you push
 git push origin :refs/tags/<tagname>
 ```
 
+Or, more expressively, use the `--delete` option: 
+
+```bash
+git push --delete origin tagname
+```
+
 Replace the tag to reference the most recent commit
 
 ```bash
