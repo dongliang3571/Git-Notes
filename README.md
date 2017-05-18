@@ -326,3 +326,17 @@ git checkout --track origin/daves_branch
 ```
 
 `--track` is shorthand for `git checkout -b [branch] [remotename]/[branch]` where [remotename] is origin in this case and [branch] is twice the same, daves_branch in this case.
+
+### Delete remote branch
+
+```bash
+# This will delete the remote branch
+git push origin :<branch-name>
+```
+
+Then delete the local one
+
+```bash
+# This will delete the local branch
+git branch -d <branch-name>
+```
