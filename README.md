@@ -118,6 +118,29 @@ To remove a single stash, if no `<stash>` is given, it will remove the latest on
 ```bash
 git stash drop <stash>
 ```
+### reset, revert
+
+`git reset <commit-SHA>` takes you to `<commit-SHA>` and delete all commit after `<commit-SHA>`
+
+`git revert <commit-SHA>` undoes a commit by creating a new commit. This is a safe way to undo changes, as it has no chance of re-writing the commit history
+
+**NOTE:** 
+
+You have
+A--B
+
+and you want
+
+A--B--C
+
+where the state of C is identical to the state of A, correct?  Then
+you should run:
+
+git revert B
+
+The commit(s) you pass to `git revert` are the commits you want to
+undo, not the state that you want to roll back to.
+
 
 ### Tagging
 
@@ -340,3 +363,4 @@ Then delete the local one
 # This will delete the local branch
 git branch -d <branch-name>
 ```
+
