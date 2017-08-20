@@ -134,20 +134,55 @@ git stash drop <stash>
 **NOTE:** 
 
 You have
-A--B
+
+`A--B`
 
 and you want
 
-A--B--C
+`A--B--C`
 
 where the state of C is identical to the state of A, correct?  Then
 you should run:
 
-git revert B
+`git revert B`
 
 The commit(s) you pass to `git revert` are the commits you want to
 undo, not the state that you want to roll back to.
 
+if you have multiple commits you want to `revert`, for example:
+
+In case of `A -> B -> C -> D -> HEAD` and you want `B` `C` `D` `HEAD` to be undo but still keep the commits, you can do
+
+```bash
+$ git revert --no-commit D
+$ git revert --no-commit C
+$ git revert --no-commit B
+$ git commit -m "the commit message"
+```
+
+or 
+
+```
+git revert master~3..master # revert all commit in the range of B and HEAD including B and HEAD. Note master~3 is pointing to B
+```
+
+`--no-commit`
+
+Usually the command git revert automatically creates some commits with commit log messages stating which commits were reverted.
+
+To avoid automatic commit there's the option `-n` (or `--no-commit`).
+
+But after this command, the reverted files are in the staged area. I can unstage them by using the command `git reset HEAD`
+
+Alternate solution to `git revert` would be to `checkout` contents of commit `A`, and commit this state
+
+### `~`, `^` explanation
+
+`ref~` is shorthand for `ref~1` and means the commit's first parent. `ref~2` means the commit's first parent's first parent. `ref~3` means the commit's first parent's first parent's first parent. And so on.
+
+`ref^` is shorthand for `ref^1` and means the commit's first parent. But where the two differ is that ref^2 means the commit's second parent (remember, commits can have two parents when they are a merge).
+
+The `^` and `~` operators can be combined.
 
 ### Tagging
 
