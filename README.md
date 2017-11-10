@@ -1,5 +1,19 @@
 # Git-Notes
 
+### Show commit difference
+
+`git diff COMMIT^ COMMIT` will show you the difference between that COMMIT's ancestor and the COMMIT
+
+```bash
+git diff 858f43e72f77fae74301eb243de7f6180510534c^ 858f43e72f77fae74301eb243de7f6180510534c
+```
+
+Alternatively, git show COMMIT will do something very similar. (The commit's data, including its diff.) 
+
+```bash
+git show 858f43e72f77fae74301eb243de7f6180510534c
+```
+
 ### Show status
 
 `--short` option to give a more brief view
