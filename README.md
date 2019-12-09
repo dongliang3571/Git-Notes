@@ -420,3 +420,26 @@ Then delete the local one
 git branch -d <branch-name>
 ```
 
+### Change remote url
+
+```bash
+git remote set-url origin git@gitserver.com:user/repo_name.git
+
+git remote -v
+
+# output
+# origin   ssh://git@gitserver.com:user/repo_name.git (fetch)
+# origin   ssh://git@gitserver.com:user/repo_name.git (push)
+```
+
+What the `git remote set-url` command actually does is update the repository `.git/config` file with a new URL to the remote repository.
+
+```bash
+# .git/config
+
+...
+
+[remote "origin"]
+url = git@gitserver.com:user/repo_name.git
+fetch = +refs/heads/*:refs/remotes/origin/*
+```
