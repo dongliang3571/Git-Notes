@@ -1,5 +1,13 @@
 # Git-Notes
 
+When you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together – this is called a “fast-forward.”
+
+For more : http://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+In another way,
+
+If Master has not diverged, instead of creating a new commit, git will just point master to the latest commit of the feature branch. This is a “fast forward.” There won't be any "merge commit" in fast-forwarding merge.
+
 ### Show commit difference
 
 `git diff COMMIT^ COMMIT` will show you the difference between that COMMIT's ancestor and the COMMIT
