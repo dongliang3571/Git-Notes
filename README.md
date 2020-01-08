@@ -8,6 +8,14 @@ In another way,
 
 If Master has not diverged, instead of creating a new commit, git will just point master to the latest commit of the feature branch. This is a “fast forward.” There won't be any "merge commit" in fast-forwarding merge.
 
+### undo a merged commit
+
+this will undo the merge along with the all commits from merging branch
+
+```bash
+git reset --hard HEAD^
+```
+
 ### Show commit difference
 
 `git diff COMMIT^ COMMIT` will show you the difference between that COMMIT's ancestor and the COMMIT
