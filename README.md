@@ -459,3 +459,21 @@ What the `git remote set-url` command actually does is update the repository `.g
 url = git@gitserver.com:user/repo_name.git
 fetch = +refs/heads/*:refs/remotes/origin/*
 ```
+
+### Repo info using `git rev-parse`
+
+current branch name
+
+```bash
+git rev-parse --abbrev-ref HEAD
+# output
+# master
+```
+
+current SHA-1 hash
+
+```bash
+git rev-parse HEAD
+# output
+# 897gfds89g798734987g897sd87634985kj3w90gt
+```
